@@ -1,0 +1,11 @@
+server {
+	listen *:80;
+	server_name site.domain;
+
+	location / {
+		proxy_pass http://site2.domain:8080;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection $connection_upgrade;
+	}
+}

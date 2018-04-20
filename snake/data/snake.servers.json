@@ -1,0 +1,43 @@
+[{
+	"name": "faster",
+	"size": {
+		"height": 40,
+		"width": 75
+	},
+	"tickTime": 80,
+	"foodCells": 3,
+	"fillers": ["frame:rg"]
+}, {
+	"name": "life",
+	"size": {
+		"height": 40,
+		"width": 75
+	},
+	"tickTime": 80,
+	"foodCells": 3,
+	"fillers": ["life"]
+}, {
+	"name": "fastern",
+	"size": {
+		"height": 40,
+		"width": 75
+	},
+	"tickTime": 80,
+	"foodCells": 3
+}, {
+	"name": "slower",
+	"size": {
+		"height": 40,
+		"width": 75
+	},
+	"tickTime": 100,
+	"foodCells": 2
+}, {
+	"name": "small",
+	"size": {
+		"height": 10,
+		"width": 20
+	},
+	"tickTime": 80,
+	"foodCells": 1
+}]

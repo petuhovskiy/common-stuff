@@ -1,0 +1,11 @@
+server {
+	listen *:80;
+
+	root /srv/html/site.domain;
+
+	server_name site.domain;
+	
+	location / {
+		autoindex off;
+	}
+}

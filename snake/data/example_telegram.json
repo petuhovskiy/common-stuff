@@ -1,0 +1,9 @@
+{
+        "token": "1234567890",
+        "map": {
+                "snake.game": ["-10000000000"],
+                "snake.game.logs": ["-10000000000"],
+                "snake.player":  ["-10000000000"],
+                "snake.player.logs": ["-10000000000"] 
+        }
+}
