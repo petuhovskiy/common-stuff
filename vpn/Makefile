@@ -5,7 +5,7 @@ HOST=host.domain
 NAME=ovpnsrv
 
 PORT=443
-PROT=udp
+PROTO=udp
 
 init:
 	docker run --name $(OVPN_DATA) -v /etc/openvpn busybox
@@ -14,7 +14,7 @@ init:
 
 run:
 	-docker rm -f $(NAME)
-	docker run --volumes-from $(OVPN_DATA) -d --restart=always --name $(NAME) -p $(PORT):1194/$(PROT) --cap-add=NET_ADMIN kylemanna/openvpn
+	docker run --volumes-from $(OVPN_DATA) -d --restart=always --name $(NAME) -p $(PORT):1194/udp -p $(PORT):1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
 
 client:
 	$(eval CLIENTNAME := $(shell read -p "Client name: " cliname; echo $$cliname))

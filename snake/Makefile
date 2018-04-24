@@ -6,7 +6,7 @@ name = snake
 image = arthur/snake
 
 MOUNT = -v $(dir)/data:/data
-PORTS = -p 8080:8080
+PORTS = -p 5228:8080
 LINKS =
 OTHER = --restart=always
 ARGS =
@@ -25,3 +25,6 @@ run:
 
 stop:
 	docker stop $(name)
+
+logs:
+	docker logs -f $(name)
