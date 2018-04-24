@@ -9,7 +9,7 @@ PROTO=udp
 
 init:
 	docker run --name $(OVPN_DATA) -v /etc/openvpn busybox
-	docker run --volumes-from $(OVPN_DATA) --rm kylemanna/openvpn ovpn_genconfig -u $(PROT)://$(HOST):$(PORT)
+	docker run --volumes-from $(OVPN_DATA) --rm kylemanna/openvpn ovpn_genconfig -u $(PROTO)://$(HOST):$(PORT)
 	docker run --volumes-from $(OVPN_DATA) --rm -it kylemanna/openvpn ovpn_initpki
 
 run:
