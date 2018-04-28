@@ -14,7 +14,9 @@ init:
 
 run:
 	-docker rm -f $(NAME)
-	docker run --volumes-from $(OVPN_DATA) -d --restart=always --name $(NAME) -p $(PORT):1194/udp -p $(PORT):1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
+	-docker rm -f $(NAME)_tcp
+	docker run --volumes-from $(OVPN_DATA) -d --restart=always --name $(NAME) -p $(PORT):1194/udp --cap-add=NET_ADMIN kylemanna/openvpn
+	docker run --volumes-from $(OVPN_DATA) -d --restart=always --name $(NAME)_tcp -p $(PORT):1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn ovpn_run --proto tcp
 
 client:
 	$(eval CLIENTNAME := $(shell read -p "Client name: " cliname; echo $$cliname))
