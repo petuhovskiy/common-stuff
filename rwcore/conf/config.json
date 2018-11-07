@@ -8,7 +8,7 @@
     },
     "Auth": {
         "JWT": {
-            "Secret": "DFGhjTRYU^&Yh8ij$Rfv2wedfghjklp0",
+            "Secret": "",
             "Duration": "3000h",
             "SigningMethod": "HS256"
         },
