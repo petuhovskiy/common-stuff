@@ -15,6 +15,11 @@ ARGS =
 clone:
 	git clone https://github.com/petuhovskiy/vk-utils $(srcdir)
 
+pull:
+	cd $(srcdir)
+	git pull
+	cd ..
+
 build:
 	docker build -t $(image) .
 

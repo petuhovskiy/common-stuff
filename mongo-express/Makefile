@@ -8,7 +8,7 @@ image = mongo-express
 MOUNT =
 PORTS = -p 8081:8081
 LINKS = --link mongodb:mongo
-OTHER = --restart=always
+OTHER = --restart=always --env ME_CONFIG_BASICAUTH_USERNAME=11 --env ME_CONFIG_BASICAUTH_PASSWORD=22
 ARGS =
 
 build:

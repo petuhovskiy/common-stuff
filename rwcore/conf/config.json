@@ -1,0 +1,17 @@
+{
+    "Server": {
+        "BindAddr": ":9090"
+    },
+    "Mongo": {
+        "Addr": "mongodb",
+        "DbName": "rwlist"
+    },
+    "Auth": {
+        "JWT": {
+            "Secret": "DFGhjTRYU^&Yh8ij$Rfv2wedfghjklp0",
+            "Duration": "3000h",
+            "SigningMethod": "HS256"
+        },
+        "UserKey": "User"
+    }
+}
