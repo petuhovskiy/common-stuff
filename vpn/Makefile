@@ -1,4 +1,4 @@
-.PHONY: init run client
+.PHONY: init run client rm
 
 OVPN_DATA="ovpn-main-data"
 HOST=host.domain
@@ -11,6 +11,9 @@ init:
 	docker run --name $(OVPN_DATA) -v /etc/openvpn busybox
 	docker run --volumes-from $(OVPN_DATA) --rm kylemanna/openvpn ovpn_genconfig -u $(PROTO)://$(HOST):$(PORT)
 	docker run --volumes-from $(OVPN_DATA) --rm -it kylemanna/openvpn ovpn_initpki
+
+rm:
+	docker rm -f $(OVPN_DATA)
 
 run:
 	-docker rm -f $(NAME)
