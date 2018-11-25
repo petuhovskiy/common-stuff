@@ -2,13 +2,13 @@
 
 dir = $(shell pwd)
 data = $(shell dirname $(shell dirname $(dir)))/data/$(notdir $(shell pwd))
-name = rwlist
-image = registry.gitlab.com/rwlist/client
+name = nginx-proxy
+image = jwilder/nginx-proxy
 
-MOUNT =
-PORTS =
+MOUNT = -v /var/run/docker.sock:/tmp/docker.sock:ro
+PORTS = -p 80:80
 LINKS =
-OTHER = --restart=always -e VIRTUAL_HOST=rwlist.io
+OTHER = --restart=always
 ARGS =
 
 build:
@@ -35,9 +35,6 @@ runit:
 
 stop:
 		docker stop $(name)
-
-pull:
-	docker pull $(image)
 
 logs:
 	docker logs -f $(name)

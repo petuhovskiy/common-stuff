@@ -6,9 +6,9 @@ name = rwcore
 image = registry.gitlab.com/rwlist/rwcore
 
 MOUNT = -v $(dir)/conf:/conf
-PORTS = -p 9090:9090
+PORTS = --expose 9090
 LINKS = --link mongodb
-OTHER = --restart=always
+OTHER = --restart=always -e VIRTUAL_HOST=api.rwlist.io
 ARGS =
 
 build:

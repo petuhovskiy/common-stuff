@@ -6,7 +6,7 @@ name = dante
 image = schors/tgdante2
 
 MOUNT =
-PORTS = -p 0.0.0.0:1080:1080 -p 0.0.0.0:5001:1080
+PORTS = -p 0.0.0.0:1080:1080
 LINKS =
 OTHER = --restart unless-stopped -e USER=arthur -e PASS=password
 ARGS =

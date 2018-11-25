@@ -9,7 +9,7 @@ srcdir = src
 MOUNT =
 PORTS =
 LINKS = --link mongodb:mongo
-OTHER = --restart=always
+OTHER = --restart=always -e VIRTUAL_HOST=friends.rwlist.io
 ARGS =
 
 clone:
