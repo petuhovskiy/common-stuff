@@ -1,19 +1,18 @@
 .PHONY: build no-cache-build run runit stop pull logs
-SHELL = /bin/bash
+SHELL := /bin/bash
 
 dir = $(shell pwd)
 data = $(shell dirname $(shell dirname $(dir)))/data/$(notdir $(shell pwd))
-name = dante
-image = schors/tgdante2
+name = unfreezer
+image = registry.gitlab.com/rwlist/standings-unfreezer
 
-USER = $(shell source .env && echo $$USER)
-PASS = $(shell source .env && echo $$PASS)
+HOST = unfreezer.rwlist.io
 
 MOUNT =
-PORTS = -p 0.0.0.0:1080:1080
+PORTS =
 LINKS =
-OTHER = --restart unless-stopped
-ENV = -e USER=$(USER) -e PASS=$(PASS)
+OTHER = --restart=always
+ENV = -e VIRTUAL_HOST=$(HOST) -e LETSENCRYPT_HOST=$(HOST) -e LETSENCRYPT_EMAIL=a@rwlist.io
 ARGS =
 
 build:
@@ -37,6 +36,7 @@ runit:
 		$(MOUNT) \
 		$(PORTS) \
 		$(LINKS) \
+		$(ENV) \
 		$(image) $(ARGS)
 
 stop:

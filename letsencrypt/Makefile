@@ -13,19 +13,19 @@ OTHER = --restart=always
 ARGS =
 
 build:
-		docker build -t $(image) .
+	docker build -t $(image) .
 
 no-cache-build:
-		docker build -t $(image) --no-cache .
+	docker build -t $(image) --no-cache .
 
 run:
-		-docker rm -f $(name)
-		docker run --name $(name) \
-				$(MOUNT) \
-				$(PORTS) \
-				$(LINKS) \
-				$(OTHER) \
-				-d $(image)
+	-docker rm -f $(name)
+	docker run --name $(name) \
+			$(MOUNT) \
+			$(PORTS) \
+			$(LINKS) \
+			$(OTHER) \
+			-d $(image)
 
 runit:
 	docker run --rm -i -t \
@@ -35,7 +35,7 @@ runit:
 		$(image) $(ARGS) 
 
 stop:
-		docker stop $(name)
+	docker stop $(name)
 
 logs:
 	docker logs -f $(name)
