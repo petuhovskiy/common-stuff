@@ -11,7 +11,7 @@ MOUNT = -v $(dir)/nginx.conf:/etc/nginx/nginx.conf:ro \
 	-v $(dir)/mime.types:/etc/nginx/mime.types:ro \
 	-v /srv/html:/srv/html
 PORTS = -p 80:80
-LINKS = --link friends-vk --link rwlist --link rwcore
+LINKS =
 OTHER = --restart=always
 
 run:
