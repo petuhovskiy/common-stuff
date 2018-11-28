@@ -6,6 +6,7 @@ data = $(shell dirname $(shell dirname $(dir)))/data/$(notdir $(shell pwd))
 name = metal-snake
 image = awesome-app
 
+USER = $(shell source .env && echo $$USER)
 HOST = .rwlist.io
 
 MOUNT = -v $(dir)/data:/var/data
