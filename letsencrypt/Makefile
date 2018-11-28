@@ -2,13 +2,14 @@
 
 dir = $(shell pwd)
 data = $(shell dirname $(shell dirname $(dir)))/data/$(notdir $(shell pwd))
-name = rwlist
-image = registry.gitlab.com/rwlist/client
+certs = $(shell dirname $(shell dirname $(dir)))/data/certs
+name = letsencrypt
+image = jrcs/letsencrypt-nginx-proxy-companion
 
-MOUNT =
+MOUNT = -v $(certs):/etc/nginx/certs:rw -v /var/run/docker.sock:/var/run/docker.sock:ro --volumes-from nginx-proxy
 PORTS =
 LINKS =
-OTHER = --restart=always -e VIRTUAL_HOST=rwlist.io -e LETSENCRYPT_HOST=rwlist.io -e LETSENCRYPT_EMAIL=a@rwlist.io
+OTHER = --restart=always
 ARGS =
 
 build:
@@ -36,8 +37,11 @@ runit:
 stop:
 		docker stop $(name)
 
-pull:
-	docker pull $(image)
-
 logs:
 	docker logs -f $(name)
+
+force_renew:
+	docker exec $(name) /app/force_renew
+
+cert_status:
+	docker exec $(name) /app/cert_status
