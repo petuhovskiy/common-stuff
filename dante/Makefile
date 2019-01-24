@@ -10,7 +10,7 @@ USER = $(shell source .env && echo $$USER)
 PASS = $(shell source .env && echo $$PASS)
 
 MOUNT =
-PORTS = -p 0.0.0.0:1080:1080
+PORTS = -p 0.0.0.0:2048:1080
 LINKS =
 OTHER = --restart unless-stopped
 ENV = -e USER=$(USER) -e PASS=$(PASS)
